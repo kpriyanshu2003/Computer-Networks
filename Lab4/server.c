@@ -8,9 +8,9 @@
 
 int main(int argc, char *argv[])
 {
-    if (argc != 3)
+    if (argc != 2)
     {
-        fprintf(stderr, "Usage: %s <ip> <port>\n", argv[0]);
+        fprintf(stderr, "Usage: %s <port>\n", argv[0]);
         exit(EXIT_FAILURE);
     }
 
@@ -19,8 +19,7 @@ int main(int argc, char *argv[])
     socklen_t client_addr_len = sizeof(client_addr);
     char buffer[BUFFER_SIZE];
 
-    const char *ip = argv[1];
-    int port = atoi(argv[2]);
+    int port = atoi(argv[1]);
 
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
     {
@@ -38,7 +37,7 @@ int main(int argc, char *argv[])
     }
 
     server_addr.sin_family = AF_INET;
-    server_addr.sin_addr.s_addr = inet_addr(ip);
+    server_addr.sin_addr.s_addr = INADDR_ANY;
     server_addr.sin_port = htons(port);
 
     if (bind(server_fd, (struct sockaddr *)&server_addr, sizeof(server_addr)) == -1)
@@ -56,7 +55,7 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    printf("Server is listening on %s:%d...\n", ip, port);
+    printf("Server is listening on %d...\n", port);
 
     // Accept a connection
     if ((client_fd = accept(server_fd, (struct sockaddr *)&client_addr, &client_addr_len)) == -1)
