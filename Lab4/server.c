@@ -27,7 +27,6 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    // Set socket options to reuse address and port
     int opt = 1;
     if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) == -1)
     {
@@ -47,7 +46,6 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    // Listen for incoming connections
     if (listen(server_fd, 5) == -1)
     {
         perror("Listen failed");
@@ -57,7 +55,6 @@ int main(int argc, char *argv[])
 
     printf("Server is listening on %d...\n", port);
 
-    // Accept a connection
     if ((client_fd = accept(server_fd, (struct sockaddr *)&client_addr, &client_addr_len)) == -1)
     {
         perror("Accept failed");
@@ -65,12 +62,10 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    // Print client's IP address and port number
     char client_ip[INET_ADDRSTRLEN];
     inet_ntop(AF_INET, &client_addr.sin_addr, client_ip, INET_ADDRSTRLEN);
     printf("Connected to client %s:%d\n", client_ip, ntohs(client_addr.sin_port));
 
-    // Exchange messages
     while (1)
     {
         memset(buffer, 0, BUFFER_SIZE);

@@ -21,14 +21,12 @@ int main(int argc, char *argv[])
     char *ip_address = argv[1];
     int port = atoi(argv[2]);
 
-    // Create socket
     if ((sock_fd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
     {
         perror("Socket creation failed");
         exit(EXIT_FAILURE);
     }
 
-    // Set up server address structure
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(port);
     if (inet_pton(AF_INET, ip_address, &server_addr.sin_addr) <= 0)
@@ -38,7 +36,6 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    // Connect to the server
     if (connect(sock_fd, (struct sockaddr *)&server_addr, sizeof(server_addr)) == -1)
     {
         perror("Connection failed");
@@ -48,7 +45,6 @@ int main(int argc, char *argv[])
 
     printf("Connected to server %s:%d\n", ip_address, port);
 
-    // Exchange messages
     while (1)
     {
         printf("Client: ");

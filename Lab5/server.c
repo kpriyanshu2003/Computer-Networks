@@ -27,14 +27,12 @@ void handle_client(int client_sock)
 
         printf("Client: %s\n", buffer);
 
-        // Check if client sent "logout"
         if (strncmp(buffer, "logout", 6) == 0)
         {
             printf("Client requested logout.\n");
             break;
         }
 
-        // Echo the message back to the client
         nbytes = write(client_sock, buffer, strlen(buffer));
         if (nbytes <= 0)
         {
@@ -54,7 +52,6 @@ int main()
     socklen_t addr_len = sizeof(client_addr);
     pid_t pid;
 
-    // Create a TCP socket
     server_sock = socket(AF_INET, SOCK_STREAM, 0);
     if (server_sock < 0)
     {
@@ -62,12 +59,10 @@ int main()
         exit(EXIT_FAILURE);
     }
 
-    // Configure server address
     server_addr.sin_family = AF_INET;
     server_addr.sin_addr.s_addr = INADDR_ANY;
     server_addr.sin_port = htons(PORT);
 
-    // Bind the socket to the specified IP and port
     if (bind(server_sock, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0)
     {
         perror("Bind error");
@@ -75,7 +70,6 @@ int main()
         exit(EXIT_FAILURE);
     }
 
-    // Listen for incoming connections
     if (listen(server_sock, 5) < 0)
     {
         perror("Listen error");
@@ -87,7 +81,6 @@ int main()
 
     while (1)
     {
-        // Accept a new connection
         client_sock = accept(server_sock, (struct sockaddr *)&client_addr, &addr_len);
         if (client_sock < 0)
         {
