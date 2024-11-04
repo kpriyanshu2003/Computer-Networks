@@ -41,6 +41,7 @@ int main(int argc, char *argv[])
 
         sendto(sockfd, buffer, strlen(buffer), MSG_CONFIRM, (const struct sockaddr *)&receiver_addr, sizeof(receiver_addr));
 
+
         if (strcmp(buffer, "exit") == 0)
             break;
 

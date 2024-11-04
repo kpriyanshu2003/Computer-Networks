@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
     {
         perror("Listen failed");
         close(server_fd);
-        exit(EXIT_FAILURE);
+        exit(EXIT_FAILURE);z
     }
 
     printf("Server is listening on %d...\n", port);
@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
     }
 
     char client_ip[INET_ADDRSTRLEN];
-    inet_ntop(AF_INET, &client_addr.sin_addr, client_ip, INET_ADDRSTRLEN);
+    inet_ntop(AF_INET, &client_addr.sin_add r, client_ip, INET_ADDRSTRLEN);
     printf("Connected to client %s:%d\n", client_ip, ntohs(client_addr.sin_port));
 
     while (1)

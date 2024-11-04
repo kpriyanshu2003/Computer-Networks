@@ -64,8 +64,7 @@ int main(int argc, char *argv[])
             break;
         }
 
-        memset(buffer, 0, BUFFER_SIZE);
-        int bytes_received = recv(sock_fd, buffer, BUFFER_SIZE, 0);
+    N
         if (bytes_received < 0)
         {
             perror("recv failed");
