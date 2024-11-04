@@ -1,3 +1,9 @@
+/*
+    Design a connection oriented concurrent chat server using fork() in C where the server will serve multiple chart clients
+    simultaneously.When the chat server receives a “logout” message from a particular client then it terminates the respective connection
+    with that chat client.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

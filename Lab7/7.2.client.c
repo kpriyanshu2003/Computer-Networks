@@ -1,3 +1,9 @@
+/*
+    Write a program where client will send an array of alphabets, and server will sort it.
+    i) Server will display the sorted alphabets in ascending order.
+    ii) Client will display the sorted alphabets in descending order .
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

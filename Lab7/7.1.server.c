@@ -1,3 +1,18 @@
+/*
+    Write a program to send an array of n integers from client to server using UDP socket. The server will reply
+    to the client with the sum of all odd numbers and the sum of all even numbers separately.
+
+    Example:
+                Server                                                                            Client
+    -----------------------------------------------                 -----------------------------------------------------
+    The server received the array as follows:                       Enter how many numbers to input an array: 5
+    {1, 2, 5, 7, 6}                                                 Enter 5 integers for the array: 1 2 5 7 6
+    Server sending the result                                       The client received from the server
+    (Please press enter)                                            ODD Sum = 13
+                                                                    Even Sum = 8
+    N.B: As soon as you will press the enter key on the server side, the result will be displayed on the client side.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

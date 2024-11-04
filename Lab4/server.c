@@ -1,3 +1,13 @@
+/*
+    Write a connection - oriented client and server program in C using command line arguments.At the server side, pass the port
+    number (to whom the server will bind to) in the command line.At the client side, pass the IP address and the port number of the server
+    (to whom the client will connect to) as command line argument and carry out the following tasks.
+
+    ◦ After establishment of connection print the IP Address and port number of the client to whom the server is connected now.
+    ◦ Then exchange messages.
+    ◦ After message exchange is over then the client sends a “close” message to the server to tear down the connection
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -50,7 +60,8 @@ int main(int argc, char *argv[])
     {
         perror("Listen failed");
         close(server_fd);
-        exit(EXIT_FAILURE);z
+        exit(EXIT_FAILURE);
+        z
     }
 
     printf("Server is listening on %d...\n", port);

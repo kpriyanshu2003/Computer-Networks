@@ -1,3 +1,6 @@
+// Write a program where more than two clients will send student details (SID, Name, Age, CGPA) and server will sort student details in 
+// ascending order of CGPA and display in the server.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

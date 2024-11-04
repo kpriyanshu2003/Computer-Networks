@@ -1,3 +1,6 @@
+// Write a program where more than two clients will send bank customer details (Account Number, Customer ID, Balance, Phone Number) and
+// server will display customer names whose balance is more than INR 2000.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
